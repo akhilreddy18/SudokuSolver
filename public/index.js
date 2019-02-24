@@ -1,22 +1,26 @@
-var fs = require("fs");
-
-var allPuzzles = fs.readFileSync('puzzles.txt', 'utf8').split("Grid");
-allPuzzles.splice(0,1);
-
-var randomPuzzle = new Array(9);
-for(var i=0; i<9; i++){
-	randomPuzzle[i] = new Array(9);
-}
-
+var randomPuzzle = [
+[0,0,3,0,2,0,6,0,0],
+[9,0,0,3,0,5,0,0,1],
+[0,0,1,8,0,6,4,0,0],
+[0,0,8,1,0,2,9,0,0],
+[7,0,0,0,0,0,0,0,8],
+[0,0,6,7,0,8,2,0,0],
+[0,0,2,6,0,9,5,0,0],
+[8,0,0,2,0,3,0,0,9],
+[0,0,5,0,1,0,3,0,0]];
+ 
 for(var i=0; i<9; i++){
 	for(var j=0; j<9; j++){
-		randomPuzzle[i][j] = parseInt(allPuzzles[0].split("\n")[i+1].charAt(j));
+		if(randomPuzzle[i][j]>0){
+			document.getElementById(""+i+j+"").value=randomPuzzle[i][j];
+			document.getElementById(""+i+j+"").disabled=true;
+		}
 	}
-} 
+}
 
-console.log(randomPuzzle);
-console.log("--------------------------------");
-console.log(sudokuSolver(randomPuzzle));
+document.getElementById("clickMe").addEventListener("click", ()=>{
+	sudokuSolver(randomPuzzle);
+});
 
 function sudokuSolver(randomPuzzle){
 	
@@ -70,5 +74,11 @@ function sudokuSolver(randomPuzzle){
 			}
 		}
 	}
-	return randomPuzzle;
+	for(var i=0; i<9; i++){
+		for(var j=0; j<9; j++){
+			if(randomPuzzle[i][j]>0){
+				document.getElementById(""+i+j+"").value=randomPuzzle[i][j];
+		}
+	}
+}
 }
