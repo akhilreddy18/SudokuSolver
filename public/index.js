@@ -1,5 +1,5 @@
-document.getElementById("clickMe").addEventListener("click", ()=>{
-	var randomPuzzle = document.getElementById("clickMe").getAttribute("data-x");
+document.getElementById("solveButton").addEventListener("click", ()=>{
+	var randomPuzzle = document.getElementById("solveButton").getAttribute("data-x");
 
 	randomPuzzle = JSON.parse( "[" + randomPuzzle + "]");
 
@@ -9,6 +9,16 @@ document.getElementById("clickMe").addEventListener("click", ()=>{
 	console.log(newArr)
 	
 	sudokuSolver(newArr);
+});
+
+document.getElementById("resetButton").addEventListener("click", ()=>{
+	var x = document.getElementsByTagName('input');
+	// console.log(!x[0].disabled, x[0].value);
+	for(var i=0; i<x.length; i++){
+		if(!x[i].disabled){
+			x[i].value = "";
+		}
+	}
 });
 
 function sudokuSolver(randomPuzzle){
