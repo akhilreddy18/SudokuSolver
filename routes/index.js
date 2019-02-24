@@ -15,7 +15,7 @@ for(var i=0; i<9; i++){
 router.get("/", (req,res)=>{
 
 	random = Math.floor(Math.random()* allPuzzles.length );
-	console.log(allPuzzles.length);
+	// console.log(allPuzzles.length);
 
 	for(var i=0; i<9; i++){
 	for(var j=0; j<9; j++){
