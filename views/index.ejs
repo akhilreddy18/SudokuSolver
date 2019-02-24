@@ -153,5 +153,18 @@
 
     </div>
 
+    <script>
+      var randomPuzzle = <%= JSON.stringify(randomPuzzle) %>;
+      // console.log(randomPuzzle);
+      for(var i=0; i<9; i++){
+        for(var j=0; j<9; j++){
+          if(randomPuzzle[i][j]>0){
+            document.getElementById(""+i+j+"").value=randomPuzzle[i][j];
+            document.getElementById(""+i+j+"").disabled=true;
+          }
+        }
+      }
+      document.getElementById("clickMe").setAttribute("data-x", randomPuzzle);
+    </script>
   </body>
 </html>
